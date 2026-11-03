@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eee8ff">
+<title>For Nomthandazo Nena Magwai 💜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root{
+  --bg:#f4efff;--lav:#d9c8ff;--lav2:#b99af7;--purple:#7953c6;
+  --deep:#49316f;--ink:#302343;--muted:#8d80a4;--white:#fff;
+  --line:#e5d9ff;--pink:#f4c9e8;--shadow:rgba(103,72,160,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;background:
+  radial-gradient(650px at 8% 5%,rgba(202,181,255,.55),transparent 62%),
+  radial-gradient(650px at 95% 15%,rgba(249,210,239,.65),transparent 60%),
+  radial-gradient(700px at 50% 100%,rgba(220,211,255,.55),transparent 65%),var(--bg);
+  color:var(--ink);font-family:'Poppins',sans-serif;overflow-x:hidden
+}
+button{font:inherit}
+.page{min-height:100vh;width:100%;display:none;justify-content:center;align-items:center;flex-direction:column;padding:24px 16px;text-align:center}
+.page.active{display:flex;animation:fade .55s ease}
+@keyframes fade{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+.card{
+  position:relative;background:rgba(255,255,255,.91);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.95);border-radius:30px;padding:30px 24px;
+  width:min(100%,450px);box-shadow:0 24px 70px var(--shadow),0 0 0 1px rgba(185,154,247,.15);
+  max-height:92vh;overflow-y:auto
+}
+.card:before{content:"";position:absolute;inset:7px;border:1px solid rgba(217,200,255,.5);border-radius:24px;pointer-events:none}
+.card>*{position:relative}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:100px;background:#f1ebff;border:1px solid var(--line);color:var(--purple);font-size:10px;font-weight:700;letter-spacing:1px}
+h1,h2{font-family:'Dancing Script',cursive;color:var(--purple)}
+h1{font-size:2.5rem;line-height:1.15}
+h2{font-size:2rem}
+.script-title{font-family:'Playfair Display',serif;font-size:clamp(29px,8vw,39px);background:linear-gradient(100deg,#7852c3,#b18bea,#d58bbf);-webkit-background-clip:text;background-clip:text;color:transparent}
+.typewriter{font-size:14px;line-height:1.9;min-height:90px;color:#665579;white-space:pre-line;margin-top:18px}
+.cursor{display:inline-block;width:2px;height:17px;background:#a98be9;animation:blink .8s infinite;vertical-align:text-bottom}
+@keyframes blink{50%{opacity:0}}
+.btns{display:flex;gap:11px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.btn{border:1.5px solid var(--lav);background:#fff;color:var(--purple);padding:12px 19px;border-radius:100px;font-weight:700;font-size:13px;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-2px);background:#f5f0ff}
+.btn-primary{background:linear-gradient(120deg,#9d7be5,#7953c6);border:0;color:white;box-shadow:0 10px 24px rgba(121,83,198,.25)}
+.btn-primary:hover{background:linear-gradient(120deg,#8964d7,#6943b5)}
+.btn-wide{width:100%;justify-content:center}
+.btn-no{position:absolute}
+#musicToggle{position:fixed;top:14px;right:14px;z-index:1000;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.94);color:var(--purple);font-size:19px;box-shadow:0 8px 22px var(--shadow);cursor:pointer}
+#drawing{width:118px;height:118px;border-radius:50%;border:4px solid white;box-shadow:0 0 0 3px var(--lav2),0 12px 28px var(--shadow);object-fit:cover;opacity:0;transition:opacity 1.5s;margin:2px auto 16px}
+.big-count{font-size:5rem;font-family:'Dancing Script',cursive;color:var(--purple)}
+.memory-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:20px 0}
+.memory-item{border:1.5px dashed #b99af7;border-radius:17px;padding:17px 9px;background:#f6f1ff;color:#65469e;cursor:pointer;font-size:12px;font-weight:600;min-height:75px;display:flex;align-items:center;justify-content:center}
+.memory-item:hover{background:white;transform:translateY(-2px)}
+.letter-text{font-family:'Caveat',cursive;font-size:20px;text-align:left;line-height:1.75;color:#574568;white-space:pre-line;min-height:180px}
+.reason{font-size:15px;line-height:1.7;margin:16px 0;min-height:60px;color:#654d83;background:#f5f0ff;padding:15px;border-radius:15px;border-left:4px solid var(--lav2);text-align:left}
+.reason-count{font-size:10px;font-weight:800;letter-spacing:1.5px;color:#9b83c5}
+.zoomed{position:fixed;inset:0;background:rgba(35,23,53,.9);display:none;justify-content:center;align-items:center;z-index:2000;padding:20px}
+.zoomed.open{display:flex}
+.zoomed img{max-width:92%;max-height:76vh;border-radius:20px;border:5px solid white;object-fit:contain}
+.zoomed p{color:white;margin-top:12px;font-family:'Dancing Script',cursive;font-size:1.6rem}
+.letter-box{background:#fbf9ff;border:1px solid var(--line);border-radius:19px;padding:18px;margin-top:15px}
+.reason-note{font-size:12px;color:var(--muted);line-height:1.7}
+#countdownPage{overflow:hidden}
+.countdown-card{width:min(100%,410px);padding:31px 22px 24px}
+.countdown-card .script-title{margin:14px 0 3px}
+.countdown-sub{font-size:12px;color:var(--muted);line-height:1.7;margin:12px 5px 0}
+.count-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0 13px}
+.count-unit{background:#fff;border:1px solid #eee7fb;border-radius:17px;padding:13px 3px 10px;box-shadow:0 9px 20px rgba(68,45,110,.05);position:relative;overflow:hidden}
+.count-unit:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#a98bea,#e7b6df)}
+.count-unit b{display:block;font-size:25px;color:#46345f;font-weight:800}
+.count-unit span{display:block;font-size:9px;letter-spacing:1px;color:#a296b5;font-weight:700;margin-top:3px}
+.progress{height:5px;background:#eee9f6;border-radius:20px;overflow:hidden;margin:8px 3px 19px}
+.progress i{display:block;width:0;height:100%;background:linear-gradient(90deg,#9c7be1,#d9a4d4);border-radius:20px}
+.unlock-btn{width:100%;padding:16px 12px;border:0;border-radius:100px;background:#4a3b60;color:#fff;font-size:13px;font-weight:800;display:flex;justify-content:center;align-items:center;gap:10px;cursor:pointer;box-shadow:0 13px 28px rgba(74,59,96,.2)}
+.unlock-btn:disabled{opacity:.82;cursor:not-allowed}
+.unlock-btn.ready{background:linear-gradient(100deg,#9b79e0,#d58cbe)}
+.count-foot{font-size:11px;color:#a194b3;margin-top:15px}
+.floating{position:absolute;pointer-events:none;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-9px) rotate(7deg)}}
+.ribbon{position:absolute;top:0;right:23px;background:#9b7cdb;color:#fff;padding:9px 11px 13px;border-radius:0 0 11px 11px;font-size:13px}
+.small-note{font-size:11px;color:#9b8eac;margin-top:13px}
+@media(max-width:360px){.card{padding:25px 17px}.count-unit b{font-size:21px}.badge{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Add your song file beside this HTML file and name it song.mp3 -->
+<audio id="mainSong" src="song.mp3" loop preload="auto"></audio>
+<button id="musicToggle" type="button" aria-label="Toggle music" title="Toggle music">♫</button>
+
+<!-- COUNTDOWN GATE -->
+<section class="page active" id="countdownPage">
+  <div class="card countdown-card">
+    <div class="ribbon">♡</div>
+    <span class="floating" style="top:18px;left:17px">🎀</span>
+    <span class="floating" style="top:72px;right:13px;animation-delay:.5s">💜</span>
+    <span class="floating" style="bottom:85px;left:10px;animation-delay:1s">✨</span>
+    <div class="badge">✧ A LITTLE SOMETHING FOR YOU ✧</div>
+    <div class="script-title" style="font-family:'Dancing Script',cursive;margin-top:17px">Countdown for</div>
+    <h1 class="script-title">Nomthandazo</h1>
+    <p class="countdown-sub">Something special is waiting for you on your day. Come back when the clock reaches midnight, Nena. 💜</p>
+    <div class="count-grid">
+      <div class="count-unit"><b id="days">00</b><span>DAYS</span></div>
+      <div class="count-unit"><b id="hours">00</b><span>HOURS</span></div>
+      <div class="count-unit"><b id="minutes">00</b><span>MINS</span></div>
+      <div class="count-unit"><b id="seconds">00</b><span>SECS</span></div>
+    </div>
+    <div class="progress"><i id="progressBar"></i></div>
+    <button class="unlock-btn" id="unlockBtn" type="button" disabled>
+      <span id="lockIcon">🔒</span><span id="unlockText">Unlocks on 4 November</span><span>🎁</span>
+    </button>
+    <p class="count-foot">✧ made with love by Thabiso · come back at midnight, Nena ♡</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="page" id="page1">
+  <div class="card">
+    <div style="font-size:30px">💜</div>
+    <span class="badge">04 NOVEMBER • 19 YEARS • NENA</span>
+    <h1 style="margin-top:15px">A little birthday surprise</h1>
+    <div class="typewriter" id="type1"></div>
+    <div class="btns" id="btns1" style="display:none">
+      <button class="btn" type="button" onclick="startGame()">Convince me 📚</button>
+      <button class="btn btn-primary" type="button" onclick="goTo(2)">I'm focused! 💜</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section class="page" id="game">
+  <div class="card">
+    <div style="font-size:30px">👑</div>
+    <h2 id="question">Why is Nena so cute?</h2>
+    <div class="btns" id="gameButtons" style="position:relative;height:85px;margin-top:25px">
+      <button class="btn btn-primary" id="yesBtn" type="button" onclick="nextQ()" style="width:auto">Because she is PRETTY 😌💜</button>
+      <button class="btn btn-no" id="noBtn" type="button" onclick="moveNo()" style="left:65%;top:0">She's not</button>
+    </div>
+    <p id="gameStatus" class="small-note" style="min-height:24px"></p>
+  </div>
+</section>
+
+<!-- NENA INTRO -->
+<section class="page" id="page2">
+  <div class="card">
+    <img id="drawing" src="profile.jpg" alt="Nena" onerror="this.style.display='none'">
+    <div class="typewriter" id="type2"></div>
+    <div class="btns" id="btns2" style="display:none">
+      <button class="btn btn-primary" type="button" onclick="goTo(3)">Yes she is! 👑</button>
+      <button class="btn" type="button" onclick="noClicked()">No</button>
+    </div>
+    <p id="errorMsg" class="small-note" style="min-height:22px"></p>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section class="page" id="page3">
+  <div class="card">
+    <div id="countdownDiv">
+      <div class="big-count" id="bigCount">3</div>
+      <p class="small-note">Preparing your 19th birthday letter, Nena... 💜</p>
+    </div>
+    <div id="letterDiv" style="display:none">
+      <div style="font-size:30px">💌</div>
+      <h1>For my NENA</h1>
+      <div class="letter-box"><div class="letter-text" id="letterType"></div></div>
+      <button class="btn btn-primary btn-wide" type="button" onclick="goTo(4)" style="margin-top:18px">Done reading → Memories 💜</button>
+    </div>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section class="page" id="page4">
+  <div class="card">
+    <div style="font-size:29px">📸</div>
+    <h1>Chula's Memories ♡</h1>
+    <p class="small-note">Little snapshots of a very special person.</p>
+    <div class="memory-grid">
+      <button class="memory-item" type="button" onclick="zoom('pic1.jpg','My fav pic — period, natural beauty 💅🥹')">My fav pic ✨</button>
+      <button class="memory-item" type="button" onclick="zoom('pic2.jpg','Baddie, clean & polite 🎀')">Baddie 🎀</button>
+      <button class="memory-item" type="button" onclick="zoom('pic3.jpg','Pretty 🥺📚')">Looking PRETTY 💜</button>
+      <button class="memory-item" type="button" onclick="zoom('pic4.jpg','That smile — pure beauty 🌸')">Your beauty 🌷</button>
+    </div>
+    <p class="small-note">You deserve all the spotlight today, Princess Nena. 💜</p>
+    <button class="btn btn-primary btn-wide" type="button" onclick="goTo(5)" style="margin-top:16px">Next → 19 Reasons 💗</button>
+  </div>
+</section>
+
+<!-- 19 REASONS -->
+<section class="page" id="page5">
+  <div class="card">
+    <div style="font-size:29px">💜</div>
+    <h1>19 Reasons</h1>
+    <p class="reason-note">Nineteen little reasons, for your nineteenth birthday.</p>
+    <p class="reason-count" id="reasonCounter" style="margin-top:18px">TAP BELOW TO BEGIN</p>
+    <div class="reason" id="reason">Ready, Nena? Here's the first one. 🥹</div>
+    <button class="btn btn-primary btn-wide" id="nextReasonBtn" type="button" onclick="showReason()">Reveal a reason 💗</button>
+    <button class="btn btn-primary btn-wide" id="musicBtn" type="button" onclick="goTo(6)" style="display:none">To the final surprise ✨</button>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="page" id="page6">
+  <div class="card">
+    <div style="font-size:32px">🎧</div>
+    <h1>One Last Thing</h1>
+    <div class="letter-box">
+      <p style="font-size:13px;line-height:1.9;color:#665579">Ice cream date still loading... I haven't forgotten. 🍦💜<br>After exams, we celebrate properly, my nineteen-year-old queen. 🎂👑</p>
+    </div>
+    <p style="font-family:'Dancing Script',cursive;font-size:25px;color:#9270cf;margin-top:18px">You made it to the last year of being a teen. 🥺</p>
+    <a class="btn btn-primary btn-wide" style="display:flex;text-decoration:none;margin-top:18px" href="https://wa.me/?text=I've%20seen%20the%20letter%20and%20everything%20and%20my%20comment%20is%20...%20Thank%20you%20so%20much%20Thabiso%20%F0%9F%A5%BA%F0%9F%92%9C">Text me your reaction 💌</a>
+    <button class="btn btn-wide" type="button" onclick="blast()" style="margin-top:10px">Blow candles again 🎂✨</button>
+    <p class="small-note">Made for you, Nena. Always. ♡</p>
+  </div>
+</section>
+
+<div class="zoomed" id="zoomed" onclick="closeZoom()">
+  <div style="text-align:center" onclick="event.stopPropagation()">
+    <img id="zoomImg" src="" alt="Memory">
+    <p id="zoomCaption"></p>
+    <button class="btn" type="button" onclick="closeZoom()" style="margin-top:14px">Close ✕</button>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const confettiColors = ['#9b7be0','#c8b5f5','#e8b7df','#ffffff'];
+let isPlaying = false;
+let qIndex = 0;
+let noCount = 0;
+let rIndex = 0;
+let page2Started = false;
+let countdownStarted = false;
+let countdownTimer = null;
+let countdownTimeout = null;
+let typeTimer = null;
+
+/* Date logic: unlock at midnight on 4 November, and remain unlocked all day. */
+const nowAtLoad = new Date();
+const thisBirthday = new Date(nowAtLoad.getFullYear(), 10, 4, 0, 0, 0, 0);
+const endOfBirthday = new Date(nowAtLoad.getFullYear(), 10, 5, 0, 0, 0, 0);
+const birthdayTarget = nowAtLoad < thisBirthday ? thisBirthday :
+  (nowAtLoad < endOfBirthday ? thisBirthday : new Date(nowAtLoad.getFullYear()+1, 10, 4, 0, 0, 0, 0));
+const countdownStart = new Date(birthdayTarget.getFullYear(), 0, 1).getTime();
+const countdownTotal = Math.max(1, birthdayTarget.getTime() - nowAtLoad.getTime());
+
+function updateCountdown(){
+  const diff = birthdayTarget.getTime() - Date.now();
+  if(diff <= 0){
+    $('days').textContent = $('hours').textContent = $('minutes').textContent = $('seconds').textContent = '00';
+    $('progressBar').style.width = '100%';
+    $('unlockBtn').disabled = false;
+    $('unlockBtn').classList.add('ready');
+    $('lockIcon').textContent = '🎁';
+    $('unlockText').textContent = 'Open your surprise, Nomthandazo';
+    return;
+  }
+  $('days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+  $('hours').textContent = String(Math.floor(diff/3600000)%24).padStart(2,'0');
+  $('minutes').textContent = String(Math.floor(diff/60000)%60).padStart(2,'0');
+  $('seconds').textContent = String(Math.floor(diff/1000)%60).padStart(2,'0');
+  const elapsed = Math.max(0, countdownTotal-diff);
+  $('progressBar').style.width = Math.min(100, elapsed/countdownTotal*100)+'%';
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+$('unlockBtn').addEventListener('click',()=>{
+  if($('unlockBtn').disabled) return;
+  goTo(1);
+  playMainSong();
+});
+
+/* Music: browser audio starts only after a user gesture. */
+const mainSong = $('mainSong');
+function updateMusicButton(){
+  $('musicToggle').textContent = isPlaying ? '♫' : '♪';
+  $('musicToggle').style.background = isPlaying ? '#eee7ff' : 'rgba(255,255,255,.94)';
+}
+async function playMainSong(){
+  try{
+    mainSong.volume = 0.35;
+    await mainSong.play();
+    isPlaying = true;
+  }catch(error){
+    isPlaying = false;
+  }
+  updateMusicButton();
+}
+function pauseMainSong(){
+  mainSong.pause();
+  isPlaying = false;
+  updateMusicButton();
+}
+$('musicToggle').addEventListener('click',async()=>{
+  if(isPlaying) pauseMainSong();
+  else await playMainSong();
+});
+mainSong.addEventListener('play',()=>{isPlaying=true;updateMusicButton()});
+mainSong.addEventListener('pause',()=>{isPlaying=false;updateMusicButton()});
+mainSong.addEventListener('error',()=>{isPlaying=false;updateMusicButton()});
+updateMusicButton();
+
+/* Navigation */
+function goTo(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const id = page === 'game' ? 'game' : 'page'+page;
+  $(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(page === 2 && !page2Started) startPage2();
+  if(page === 3) startPage3();
+}
+
+/* Typewriter, safely handles text and cancels previous animation. */
+function typeText(element,text,speed,callback){
+  if(typeTimer) clearInterval(typeTimer);
+  let i=0;
+  element.textContent='';
+  typeTimer=setInterval(()=>{
+    element.textContent=text.slice(0,i);
+    const cursor=document.createElement('span');
+    cursor.className='cursor';
+    element.appendChild(cursor);
+    i++;
+    if(i>text.length){
+      clearInterval(typeTimer);
+      typeTimer=null;
+      element.textContent=text;
+      if(callback) callback();
+    }
+  },speed);
+}
+
+const introText = `Hi THANDAZO, I know it's exam season, Nena 🥺💞 and every second matters. But can you lend me a few moments of your time?
+
+We're celebrating YOU today! 🥰
+
+I couldn't afford a physical gift, but I remembered something: not every special gift has to be bought. Some live in the things we carry in our hearts and minds. 🤭🥹
+
+So, would you allow me to borrow a few seconds and hopefully give you a little tear of joy? 💜`;
+typeText($('type1'),introText,27,()=>$('btns1').style.display='flex');
+
+/* Quiz */
+const questions=[
+  'Why is Nena so pretty? 💅',
+  'Is it the pretty + cutie combo? 🥹',
+  'Why do you make 19 look so soft and powerful? 👑',
+  'Do you know you are my favourite? 💜'
+];
+function startGame(){qIndex=0;renderQuestion();$('gameStatus').textContent='';goTo('game')}
+function renderQuestion(){
+  $('question').textContent=questions[qIndex];
+  $('yesBtn').textContent=['Because she is PRETTY 😌💜','Obviously, look at her! 🎀','Main character energy ✨','You already know! 🥺'][qIndex];
+  $('noBtn').style.left='65%';$('noBtn').style.top='0';
+}
+  function moveNo(){
+  const area=$('gameButtons'),no=$('noBtn');
+  const maxX=Math.max(0,area.clientWidth-no.offsetWidth);
+  const maxY=Math.max(0,area.clientHeight-no.offsetHeight);
+  no.style.left=Math.random()*maxX+'px';
+  no.style.top=Math.random()*maxY+'px';
+  $('gameStatus').textContent='Nice try! Catch it first. 🤭';
+}
+function nextQ(){
+  qIndex++;
+  if(qIndex<questions.length){renderQuestion();$('gameStatus').textContent='Correct! Next one. 😌🎀'}
+  else{$('gameStatus').textContent="Okay, you're officially zoned in. Let's celebrate! 💜";$('yesBtn').disabled=true;$('noBtn').disabled=true;setTimeout(()=>{ $('yesBtn').disabled=false;$('noBtn').disabled=false;goTo(2);},900)}
+}
+
+/* Nena introduction */
+function startPage2(){
+  page2Started=true;
+  $('drawing').style.display='block';
+  $('drawing').style.opacity='1';
+  const text=`On 4 November 2007, Nomthandazo C. Magwai, AKA Nena, was born. 🤭✨
+
+This elegant soul came into the world, and look at her now!
+
+She's cute, right? Nineteen years of being the girl she is. 🎀
+
+Now, be honest. Are you going to admit the truth? 🥹`;
+  typeText($('type2'),text,32,()=>$('btns2').style.display='flex');
+}
+const noMessages=['Girl, think again! 😭','Be for real right now. 🎀','Are you blind, bestie? 😅','Try again, Princess. 👑','You cannot deny the truth forever. 🥺💜'];
+function noClicked(){noCount++;$('errorMsg').textContent=noMessages[Math.min(noCount-1,noMessages.length-1)]}
+
+/* Birthday letter */
+const letterText=`Hi NENA 💜
+
+It's your birthday, dear.
+
+You know I could talk the whole day about how special you are, how pretty you are, and how much good I wish for you. I'll try to keep it short, though. 🤭🥹
+
+First of all, HAPPY 19TH BIRTHDAY, NENA! 🎂💞
+
+I hope you enjoy your day to the fullest. And honestly, I'll fight anyone who dares to cross you. 😅 Just remember that you're loved this side, neh. Asikho lapho. 💜
+
+I've known you for at least three years. In fact, it was around this time when we started chatting. 🥺 And yesterday was a special day too, if you remember very well. 🤭
+
+Let me whisper something to you. 😎
+
+When people talk about their cute, dark-skinned girls, you are one of the people I tend to mention. Your complexion? Damn, I love it immensely, shm. I don't know what it is, but I'm sure there's always someone with something to say.
+
+And nna, ko rata ole omontsho. Before you even think about bleaching or doing anything to change yourself, please block me first. 😂💜
+
+I wished I could get you a solid physical gift, but things aren't always as easy as we'd like them to be. So I'll let that slide and put this little gift on the internet instead.
+
+It will be here, and it can grow with you as you grow older. Maybe it will change every year and celebrate every new age you reach. So, in its own little way, this is a forever gift. 🎀✨
+
+Just know that bro loves you so, so much. He's always waiting for the day you might actually need his help.
+
+I'll always be at your service, 24/7, 365 days a year, when I say I'm always here for you. Neh. 🫶🏽
+
+And I know this is a tough season. Exams can be exhausting, and I hope you're coping. I can't lie and say it'll be easy, but I believe you'll come out of this stronger than before.
+
+This is pure torture sometimes, but wena, you still manage to look pretty while suffering. 🤣🤣🥹💞
+
+You're the best, sis. Happy 19th birthday, Nena. I hope this new chapter brings you peace, happiness, love, beautiful memories, and every opportunity your heart deserves.
+
+And remember, you don't have to have everything figured out right now. Just keep going, one day at a time. I'm rooting for you. 💜
+
+Oh, and that ice cream date is still loading. I haven't forgotten. 🍦🤭
+
+Yours truly,
+Thabiso 💌`;
+
+function startPage3(){
+  if(countdownStarted)return;
+  countdownStarted=true;
+  let count=3;
+  $('countdownDiv').style.display='block';
+  $('letterDiv').style.display='none';
+  $('bigCount').textContent=count;
+  countdownTimer=setInterval(()=>{
+    count--;
+    if(count>0){$('bigCount').textContent=count;return}
+    clearInterval(countdownTimer);countdownTimer=null;
+    $('countdownDiv').innerHTML='<div class="big-count">💜</div><p class="small-note">Take a deep breath, Nena. Your little surprise is ready. ✨</p>';
+    countdownTimeout=setTimeout(()=>{
+      $('countdownDiv').style.display='none';
+      $('letterDiv').style.display='block';
+      typeText($('letterType'),letterText,18,blast);
+    },1000);
+  },1000);
+}
+
+/* Photo viewer */
+function zoom(src,caption){
+  $('zoomImg').src=src;
+  $('zoomCaption').textContent=caption;
+  $('zoomed').classList.add('open');
+}
+function closeZoom(){$('zoomed').classList.remove('open')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeZoom()});
+
+/* 19 reasons */
+const reasons=[
+"1. You're cute. 🥹",
+"2. You're kind. 💜",
+"3. You're smart. 📚",
+"4. You're clean and put together. 🎀",
+"5. You're a good dancer. 🤣",
+"6. You're wonderfully unpredictable. 😂",
+"7. Your childish side is cute. 🥺",
+"8. You always have something to say. 🤭",
+"9. You're polite. 🌷",
+"10. You're well-mannered. 👑",
+"11. You have a good heart. 💞",
+"12. Your voice. 🫶🏽",
+"13. Our endless conversations and connection. 💌",
+"14. Your beautiful complexion. 💜",
+"15. You're loving. ❤️",
+"16. Our shared past and memories. ✨",
+"17. Your confidence. 👑",
+"18. Again, you're just so cute. 🥰",
+"19. Because I love you, Nena. Happy 19th! 🎂💞"
+];
+function showReason(){
+  if(rIndex>=reasons.length)return;
+  $('reasonCounter').textContent=`REASON ${rIndex+1} OF 19`;
+  typeText($('reason'),reasons[rIndex],27);
+  rIndex++;
+  if(rIndex===reasons.length){
+    $('nextReasonBtn').style.display='none';
+    $('musicBtn').style.display='flex';
+    $('reasonCounter').textContent='ALL 19 REASONS REVEALED 💜';
+    setTimeout(blast,400);
+  }
+}
+
+/* Confetti */
+function blast(){
+  if(typeof confetti!=='function')return;
+  confetti({particleCount:150,spread:75,startVelocity:34,origin:{y:.65},colors:confettiColors,disableForReducedMotion:true});
+}
+</script>
+</body>
+</html>
